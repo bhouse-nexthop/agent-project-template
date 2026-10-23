@@ -5,6 +5,17 @@ habit is what let a four-week hardware project run day and night across many ses
 steps, without the agent losing track. The rest of this page covers the other practices that made it work, and what to
 fix when you copy it. This template is built from those lessons.
 
+**Contents**
+
+- [1. The main agent only delegates](#1-the-main-agent-only-delegates)
+- [2. The files are the memory](#2-the-files-are-the-memory)
+- [3. A queue and a heartbeat keep work moving](#3-a-queue-and-a-heartbeat-keep-work-moving)
+- [4. Rules come from mistakes](#4-rules-come-from-mistakes)
+- [5. Try to break it before you spend on it](#5-try-to-break-it-before-you-spend-on-it)
+- [6. Scripts, locks and clear permissions](#6-scripts-locks-and-clear-permissions)
+- [7. What went wrong, and how to prevent it](#7-what-went-wrong-and-how-to-prevent-it)
+- [8. Start your own](#8-start-your-own)
+
 ## 1. The main agent only delegates
 
 The main agent's context is the scarcest thing in a long project. Every file it reads, every log it scrolls through
