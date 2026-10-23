@@ -201,8 +201,8 @@ This template has all the files above, ready to fill in. It also includes the ch
 size limits, the queue format, and stale "Last verified" dates, all enforced by a git pre-commit hook
 (`scripts/check.sh`, limits in `scripts/caps.conf`).
 
-1. Copy the template folder and run `scripts/init.sh`. It creates the git repo, turns on the hook and runs the first
-   check.
+1. Make a new repo with GitHub's "Use this template" button and clone it, or clone this repo and delete its `.git`
+   folder. Then run `scripts/init.sh`. It creates the git repo if needed, turns on the hook and runs the first check.
 2. Fill in the goal, what "done" means and who the owner is in `README.md`.
 3. In `RULES.md`, fill in what the agent may do alone and what needs your OK. Replace the example reasons with your own
    as mistakes happen.
