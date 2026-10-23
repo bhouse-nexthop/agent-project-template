@@ -19,7 +19,7 @@ written here is lost when a session ends. It has local git history only. Commit 
 
 | what | where |
 |---|---|
-| Why this layout works, in plain English (for people, not read on resume) | [`LESSONS.md`](LESSONS.md) |
+| Why this template works, for people (agents skip it; `scripts/init.sh` removes it from new projects) | [`LESSONS.md`](LESSONS.md) |
 | Rules and the owner's decisions (the only rules file) | [`RULES.md`](RULES.md) |
 | The queue the heartbeat runs, waiting items, the log | [`WORKLIST.md`](WORKLIST.md) |
 | Ideas and follow-ups the owner has not prioritised | [`CANDIDATES.md`](CANDIDATES.md) |

@@ -14,6 +14,9 @@ fi
 git config core.hooksPath scripts/hooks
 chmod +x scripts/check.sh scripts/hooks/pre-commit ops/bin/*
 mkdir -p archive/log archive/plan archive/review
+# LESSONS.md explains the template to people; a project's agents would only spend context on it.
+rm -f LESSONS.md
+sed -i '/LESSONS\.md/d' README.md
 scripts/check.sh
 echo "Next: fill in the <placeholders> in README.md, RULES.md and CLAUDE.md, copy areas/_template/ per area,"
 echo "then commit with your Signed-off-by trailer."

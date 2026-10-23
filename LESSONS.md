@@ -203,6 +203,7 @@ size limits, the queue format, and stale "Last verified" dates, all enforced by 
 
 1. Make a new repo with GitHub's "Use this template" button and clone it, or clone this repo and delete its `.git`
    folder. Then run `scripts/init.sh`. It creates the git repo if needed, turns on the hook and runs the first check.
+   It also removes this file from the new project, so its agents never spend context on it.
 2. Fill in the goal, what "done" means and who the owner is in `README.md`.
 3. In `RULES.md`, fill in what the agent may do alone and what needs your OK. Replace the example reasons with your own
    as mistakes happen.
