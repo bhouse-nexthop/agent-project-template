@@ -165,8 +165,11 @@ fix.
 
 ## 6. Scripts, locks and clear permissions
 
-**Turn every repeated step into a script.** Agents drift from written steps; they cannot drift from a script. Every
-script in `ops/bin/` follows the same pattern:
+**Script anything you might do more than once, the first time you do it.** Don't wait for the second time: by then
+the steps have already been done twice by hand, slightly differently. Builds, deploys, test runs, status checks, log
+parsing and setup steps all qualify, and when in doubt, script it. Agents drift from written steps; they cannot drift
+from a script. A script also saves context, because the next agent runs one command instead of working out the steps
+again. Every script in `ops/bin/` follows the same pattern:
 
 - Prints `PASS` or `FAIL` for each check and a final `SUMMARY` line.
 - Exits with an error if anything failed.

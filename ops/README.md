@@ -1,6 +1,6 @@
 # Operations scripts
 
-Every repeated procedure is a script in `ops/bin/`, so agents cannot drift from it. Conventions (copy
+Any procedure an agent might run more than once is a script in `ops/bin/`, written the first time (RULES rule 6), so agents cannot drift from it. Conventions (copy
 `ops/bin/_template`):
 
 - Prints one `PASS` / `FAIL` line per check and a final `SUMMARY PASS|FAIL <n> checks` line.

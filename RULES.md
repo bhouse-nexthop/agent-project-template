@@ -18,8 +18,13 @@ The seed "Why" lines come from the project this template was built from; replace
    or public>. **Resources we hold are ours to break:** <claimed test machines, scratch VMs, our branches>.
 5. **Shared resources only through their lock or queue** (`ops/bin/lock`, <build queue>). One heavy job at a time on
    <host>.
-6. **Use `ops/bin/` scripts instead of hand-run steps.** A script that fails or lacks an option is reported, not
-   bypassed. Never name a shell function after a command it calls (it recurses).
+6. **Make it mechanical: script anything you might do more than once, the first time you do it.** A build, a deploy,
+   a test run, a status check, a log parse, a setup step: if it could come up again, write it as a script in
+   `ops/bin/` (or the area's `scripts/`) following `ops/README.md`, and use it from then on. If unsure, script it. Use
+   the existing scripts instead of hand-run steps. A script that fails or lacks an option is reported and fixed, not
+   bypassed. Never name a shell function after a command it calls (it recurses). *Why:* hand-run steps drift and
+   repeat the same mistakes, and re-deriving them costs context every time; a script runs the same way for every
+   agent and every session.
 7. **Retract in place.** When a conclusion turns out wrong, correct it where it is written and say so. A confidently
    wrong record is worse than a thin one.
 
@@ -56,8 +61,8 @@ The seed "Why" lines come from the project this template was built from; replace
 ## 4. Record-keeping
 
 21. **Write as you go.** State changes go to the area's `STATUS.md`; a dead hypothesis goes to `RULED-OUT.md` the
-    moment it dies, with how it was killed. Any repro run twice becomes a script in the area's `scripts/` with its
-    expected-good output.
+    moment it dies, with how it was killed. Any repro you might run again is a script in the area's `scripts/` from its
+    first run (rule 6), with its expected-good output in that directory's `README.md`.
 22. **Archive, don't grow; never delete.** Move settled text verbatim to `archive/` and leave a one-line pointer.
     Caps and the queue format are enforced by the pre-commit hook.
 23. **Queue items are short and live.** At most 3 lines; a finished item leaves the Queue and becomes one dated Log
