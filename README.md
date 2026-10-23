@@ -53,7 +53,7 @@ Task: <one paragraph: what to do and the done-when>.
 Read: RULES.md sections 1 and 5; plan/<item>.md "State" and "Handoff"; <named sections only>.
 Record into: plan/<item>.md (results, evidence, what was deliberately not run and why).
 WORKLIST.md / STATUS.md: at most 3 lines each. Commit your own lines at once.
-Allowed: <what it may change, e.g. the claimed bench, branch bhouse.<x> pushes>.
+Allowed: <what it may change, e.g. the claimed bench, pushes to its own <prefix>.<x> branches>.
 Not allowed without the owner: <outward-facing actions>.
 If a run will take an hour or more: write a Handoff block in the plan file and stop.
 Report back: the result, the evidence (counts as "N passed (of M)"), and what you did not run.
