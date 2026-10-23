@@ -1,0 +1,4 @@
+.locks/
+*.out
+*.deb
+__pycache__/

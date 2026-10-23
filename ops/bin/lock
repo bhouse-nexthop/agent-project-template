@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# lock: named locks on shared resources (test machines, build hosts) that outlive a single command.
+# Usage: lock acquire <name> "<holder: what is using it>"
+#        lock release <name>
+#        lock show
+# A lock is a directory (mkdir is atomic); its info file records the holder and the time.
+set -u
+
+lock_root=${LOCK_DIR:-"$(cd "$(dirname "$0")/../.." && pwd)/.locks"}
+mkdir -p "$lock_root"
+
+case ${1:-} in
+  acquire)
+    name=${2:?name}
+    holder=${3:?holder}
+    if mkdir "$lock_root/$name" 2>/dev/null; then
+      printf '%s\t%s\n' "$(date -u +%FT%TZ)" "$holder" >"$lock_root/$name/info"
+      echo "PASS acquired $name"
+    else
+      echo "FAIL $name is held: $(cat "$lock_root/$name/info" 2>/dev/null)"
+      exit 1
+    fi
+    ;;
+  release)
+    name=${2:?name}
+    if [[ -d $lock_root/$name ]]; then
+      rm -f "$lock_root/$name/info"
+      rmdir "$lock_root/$name"
+      echo "PASS released $name"
+    else
+      echo "FAIL $name is not held"
+      exit 1
+    fi
+    ;;
+  show)
+    found=0
+    for d in "$lock_root"/*/; do
+      [[ -d $d ]] || continue
+      found=1
+      printf '%s\t%s\n' "$(basename "$d")" "$(cat "$d/info" 2>/dev/null)"
+    done
+    ((found)) || echo "no locks held"
+    ;;
+  *)
+    echo "usage: lock acquire <name> <holder> | release <name> | show" >&2
+    exit 2
+    ;;
+esac
